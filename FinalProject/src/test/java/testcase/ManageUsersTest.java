@@ -8,52 +8,41 @@ import constants.Messages;
 import pages.LoginPage;
 import pages.ManageUsersPage;
 import utilities.ExcelUtility;
+import utilities.FakerUtility;
 
 public class ManageUsersTest extends Base {
-	@Test(description = "add new user", priority = 1)
-	public void addNewUser() throws IOException {
-		// login
+	@Test(groups = { "user" }, description = "add new user", priority = 1)
+	public void addingNewUserToTheManageUserSection() throws IOException {
 		String username = ExcelUtility.readStringData(1, 0, "Login");
 		String password = ExcelUtility.readStringData(1, 1, "Login");
 		LoginPage loginpage = new LoginPage(driver);
-		loginpage.enterUsernameOnUsernameField(username);
-		loginpage.enterPasswordOnPasswordField(password);
-		loginpage.clickRememberCheckbox();
+		loginpage.enterUsernameOnUsernameField(username).enterPasswordOnPasswordField(password).clickRememberCheckbox();
 		loginpage.clickSignInButton();
-		// add user
-		String newUsername = ExcelUtility.readStringData(2, 0, "User");
-		String newPassword = ExcelUtility.readStringData(2, 1, "User");
+		// add user using faker utility
+		FakerUtility faker = new FakerUtility();
+		String newUsername = faker.generateNewUsername();
+		String newPassword = faker.generateNewPassword();
 		ManageUsersPage manageuserspage = new ManageUsersPage(driver);
 		manageuserspage.clickOnAdminUsersFromNavigation();
-		manageuserspage.clickOnManageUsersFromDropdown();
-		manageuserspage.clickOnNewUserButton();
-		manageuserspage.addNewUsername(newUsername);
-		manageuserspage.addNewPassword(newPassword);
-		manageuserspage.selectUserTypeFromDropdown();
-		manageuserspage.clickOnSaveUserButton();
+		manageuserspage.clickOnManageUsersFromDropdown().clickOnNewUserButton().addNewUsername(newUsername)
+				.addNewPassword(newPassword).selectUserTypeFromDropdown().clickOnSaveUserButton();
 		boolean isAdminUserTitleDisplayed = manageuserspage.isAdminUsersTitleDisplayed();
 		Assert.assertTrue(isAdminUserTitleDisplayed, Messages.HEADINGNOTFOUND);
 	}
 
-	@Test(description = "search a user", priority = 2)
-	public void searchNewUser() throws IOException {
-		// login
+	@Test(groups = { "user" }, description = "search a user", priority = 2)
+	public void searchAndVerifyNewlyAddedUser() throws IOException {
 		String username = ExcelUtility.readStringData(1, 0, "Login");
 		String password = ExcelUtility.readStringData(1, 1, "Login");
 		LoginPage loginpage = new LoginPage(driver);
-		loginpage.enterUsernameOnUsernameField(username);
-		loginpage.enterPasswordOnPasswordField(password);
-		loginpage.clickRememberCheckbox();
+		loginpage.enterUsernameOnUsernameField(username).enterPasswordOnPasswordField(password).clickRememberCheckbox();
 		loginpage.clickSignInButton();
 		// search user
 		String searchUsername = ExcelUtility.readStringData(2, 0, "User");
 		ManageUsersPage manageuserspage = new ManageUsersPage(driver);
 		manageuserspage.clickOnAdminUsersFromNavigation();
-		manageuserspage.clickOnManageUsersFromDropdown();
-		manageuserspage.clickSearch();
-		manageuserspage.enterUsernameInSearch(searchUsername);
-		manageuserspage.selectUserTypeFromDropdownInSearch();
-		manageuserspage.clickOnSearchButton();
+		manageuserspage.clickOnManageUsersFromDropdown().clickSearch().enterUsernameInSearch(searchUsername)
+				.selectUserTypeFromDropdownInSearch().clickOnSearchButton();
 		boolean isAdminUserTitleDisplayed = manageuserspage.isAdminUserTitleDisplayed();
 		Assert.assertTrue(isAdminUserTitleDisplayed, Messages.HEADINGNOTFOUND);
 	}

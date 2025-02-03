@@ -2,11 +2,8 @@ package pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.Select;
-
 import utilities.PageUtility;
 import utilities.WaitUtility;
 
@@ -43,53 +40,63 @@ public class SubCategoryPage {
 	@FindBy(xpath = " //h1[text()=\"List Sub Categories\"]")
 	private WebElement listSubCategoryTitle;
 
-	public void clickOnSubCategoryButton() {
+	public SubCategoryPage clickOnSubCategoryButton() {
 		WaitUtility.waitUntilElementToBeClickable(driver, subCategoryButton);
 		PageUtility.clickOnElement(subCategoryButton);
-	
+		return this;
 	}
 
-	public void clickOnNewSubCategoryButton() {
+	public SubCategoryPage clickOnNewSubCategoryButton() {
 		PageUtility.clickOnElement(clickNewSubCategory);
+		return this;
 	}
 
-	public void selectCategoryFromDropdown() {
-		Select select = new Select(selectCategoryName);
-		select.selectByVisibleText("Chocolates");
+	public SubCategoryPage selectCategoryFromDropdown() {
+
+		PageUtility.selectFromDropdown(selectCategoryName, "Chocolates");
+		return this;
 	}
 
-	public void addNewSubCategoryName(String subcategoryname) {
+	public SubCategoryPage addNewSubCategoryName(String subcategoryname) {
 		enterSubCategoryName.sendKeys(subcategoryname);
+		return this;
 	}
 
-	public void addSubCategoryImage(String image) {
+	public SubCategoryPage addSubCategoryImage(String image) {
 		imageChoosefilebutton.sendKeys(image);
+		return this;
 	}
 
-	public void clickOnSaveSubCategoryButton() {
-		Actions actions = new Actions(driver);
-		actions.moveToElement(saveSubCategory).click().perform();
+	public SubCategoryPage clickOnSaveSubCategoryButton() {
+
+		WaitUtility.waitUntilElementToBeClickable(driver, saveSubCategory);
+		PageUtility.windowScrollDown(driver);
+		PageUtility.submitButtonClick(driver, saveSubCategory);
+		return this;
 	}
 
 	public boolean isSubCategoryTitleDisplayed() {
 		return viewAddSubCategoryTitle.isDisplayed();
 	}
 
-	public void clickSearch() {
+	public SubCategoryPage clickSearch() {
 		PageUtility.clickOnElement(searchButton);
+		return this;
 	}
 
-	public void selectCategoryFromDropdownInSearch() {
-		Select select = new Select(selectCategoryNameInSearch);
-		select.selectByVisibleText("Chocolates");
+	public SubCategoryPage selectCategoryFromDropdownInSearch() {
+		PageUtility.selectFromDropdown(selectCategoryNameInSearch, "Chocolates");
+		return this;
 	}
 
-	public void enterSubCategoryInSearch(String categoryname) {
+	public SubCategoryPage enterSubCategoryInSearch(String categoryname) {
 		enterSubCategory.sendKeys(categoryname);
+		return this;
 	}
 
-	public void clickOnSearchButton() {
+	public SubCategoryPage clickOnSearchButton() {
 		PageUtility.clickOnElement(clickSearchButton);
+		return this;
 	}
 
 	public boolean isListSubCategoryTitleDisplayed() {

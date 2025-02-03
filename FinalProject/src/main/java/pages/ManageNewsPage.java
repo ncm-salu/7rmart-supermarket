@@ -5,6 +5,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import utilities.PageUtility;
+import utilities.WaitUtility;
+
 public class ManageNewsPage {
 	public WebDriver driver;
 
@@ -24,20 +27,26 @@ public class ManageNewsPage {
 	@FindBy(xpath = "//h3[text()=\"Enter News Informations\"]")
 	private WebElement newsTitleIsDisplayed;
 
-	public void clickOnManageNewsButton() {
-		manageNewsButton.click();
+	public ManageNewsPage clickOnManageNewsButton() {
+		WaitUtility.waitUntilElementToBeClickable(driver, manageNewsButton);
+		PageUtility.clickOnElement(manageNewsButton);
+		return this;
 	}
 
-	public void clickOnNewButton() {
-		clickNewButton.click();
+	public ManageNewsPage clickOnNewButton() {
+		PageUtility.clickOnElement(clickNewButton);
+		return this;
 	}
 
-	public void addNews(String addnews) {
+	public ManageNewsPage addNews(String addnews) {
 		enterNews.sendKeys(addnews);
+		return this;
 	}
 
-	public void clickOnSaveButton() {
-		saveNews.click();
+	public ManageNewsPage clickOnSaveButton() {
+		WaitUtility.waitUntilElementToBeClickable(driver, saveNews);
+		PageUtility.clickOnElement(saveNews);
+		return this;
 	}
 
 	public boolean isNewsTitleDisplayed() {

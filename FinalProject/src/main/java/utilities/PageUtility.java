@@ -13,6 +13,25 @@ public class PageUtility {
 		element.click();
 	}
 
+	public static void submitButtonClick(WebDriver driver, WebElement element) {
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("arguments[0].click()", element);
+	}
+
+	public static void windowScrollDown(WebDriver driver) {
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("window.scrollBy(0,450)", "");
+	}
+
+	public static String selectFromDropdown(WebElement element, String text) {
+		Select select = new Select(element);
+		select.selectByVisibleText(text);
+		select.selectByIndex(0);
+		select.selectByValue("");
+		WebElement selectedElement = select.getFirstSelectedOption();
+		return selectedElement.getText();
+	}
+
 	public void righClick(WebElement element) {
 		Actions act = new Actions(driver);
 		act.contextClick(element).build().perform();
@@ -33,21 +52,14 @@ public class PageUtility {
 		act.moveToElement(element).build().perform();
 	}
 
-	public void windowScrollDown() {
-		JavascriptExecutor js = (JavascriptExecutor) driver;
-		js.executeScript("window.scrollBy(0,350)", "");
-	}
-
 	public void windowScrollUp() {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("window.scrollBy(0,-350)", "");
 	}
 
-	public void selectFromDropdown(WebElement element) {
-		Select select = new Select(element);
-	 //	select.selectByIndex(1);
-		select.selectByVisibleText("Chocolates");
-     // select.selectByValue("");
+	public static void scrollView(WebElement element) {
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("arguments[0].scrollIntoView()", element);
 	}
 
 	public static void clickSubmitButton(WebElement element) {

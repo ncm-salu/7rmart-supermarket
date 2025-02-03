@@ -2,7 +2,6 @@ package pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utilities.PageUtility;
@@ -39,47 +38,56 @@ public class CategoryPage {
 	@FindBy(xpath = "//h1[text()=\"List Categories\"]")
 	private WebElement listCategoryTitle;
 
-	public void clickOnCategoryButton() {
+	public CategoryPage clickOnCategoryButton() {
 		WaitUtility.waitUntilElementToBeClickable(driver, categoryButton);
 		PageUtility.clickOnElement(categoryButton);
+		return this;
 	}
 
-	public void clickOnNewCategoryButton() {
+	public CategoryPage clickOnNewCategoryButton() {
 		PageUtility.clickOnElement(clickNewCategory);
+		return this;
 	}
 
-	public void addNewCategoryName(String categoryname) {
+	public CategoryPage addNewCategoryName(String categoryname) {
 		enterCategoryName.sendKeys(categoryname);
+		return this;
 	}
 
-	public void clickOnDiscount() {
+	public CategoryPage clickOnDiscount() {
 		PageUtility.clickOnElement(discount);
+		return this;
 	}
 
-	public void addCategoryImage(String image) {
+	public CategoryPage addCategoryImage(String image) {
 		choosefilebutton.sendKeys(image);
+		return this;
 	}
 
-	public void clickOnSaveCategoryButton() {
+	public CategoryPage clickOnSaveCategoryButton() {
 		WaitUtility.waitUntilElementToBeClickable(driver, categoryButton);
-		Actions actions = new Actions(driver);
-		actions.moveToElement(saveCategory).click().perform();
+		PageUtility.windowScrollDown(driver);
+		PageUtility.submitButtonClick(driver, saveCategory);
+		return this;
 	}
 
 	public boolean isCategoryTitleDisplayed() {
 		return addCategoryTitle.isDisplayed();
 	}
 
-	public void clickSearch() {
+	public CategoryPage clickSearch() {
 		PageUtility.clickOnElement(searchButton);
+		return this;
 	}
 
-	public void searchCategory(String categoryname) {
+	public CategoryPage searchCategory(String categoryname) {
 		enterCategory.sendKeys(categoryname);
+		return this;
 	}
 
-	public void clickOnSearchButton() {
+	public CategoryPage clickOnSearchButton() {
 		PageUtility.clickOnElement(clickSearchButton);
+		return this;
 	}
 
 	public boolean isListCategoryTitleDisplayed() {

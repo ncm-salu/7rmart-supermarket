@@ -5,6 +5,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import utilities.PageUtility;
+import utilities.WaitUtility;
+
 public class LoginPage {
 	public WebDriver driver;
 
@@ -27,20 +30,25 @@ public class LoginPage {
 	@FindBy(xpath = "//h5[text()=\" Alert!\"]")
 	private WebElement alertBoxErrorMessage;
 
-	public void enterUsernameOnUsernameField(String username) {
+	public LoginPage enterUsernameOnUsernameField(String username) {
 		usernameField.sendKeys(username);
+		return this;
 	}
 
-	public void enterPasswordOnPasswordField(String password) {
+	public LoginPage enterPasswordOnPasswordField(String password) {
 		passwordField.sendKeys(password);
+		return this;
 	}
 
-	public void clickRememberCheckbox() {
-		remember.click();
+	public LoginPage clickRememberCheckbox() {
+		WaitUtility.waitUntilElementToBeClickable(driver, remember);
+		PageUtility.clickOnElement(remember);
+		return this;
 	}
 
-	public void clickSignInButton() {
-		signinButton.click();
+	public HomePage clickSignInButton() {
+		PageUtility.clickOnElement(signinButton);
+		return new HomePage(driver);
 	}
 
 	public boolean isDashboardDisplayed() {

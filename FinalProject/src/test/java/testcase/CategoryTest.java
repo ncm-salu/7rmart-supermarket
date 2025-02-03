@@ -12,47 +12,35 @@ import utilities.ExcelUtility;
 
 public class CategoryTest extends Base {
 
-	@Test(description = " add valid category", priority = 1)
-	public void addValidCategory() throws IOException {
-		// login
+	@Test(groups = { "category" }, description = " add valid category", priority = 1)
+	public void addingANewProductToTheCategory() throws IOException {
 		String username = ExcelUtility.readStringData(1, 0, "Login");
 		String password = ExcelUtility.readStringData(1, 1, "Login");
 		LoginPage loginpage = new LoginPage(driver);
-		loginpage.enterUsernameOnUsernameField(username);
-		loginpage.enterPasswordOnPasswordField(password);
-		loginpage.clickRememberCheckbox();
+		loginpage.enterUsernameOnUsernameField(username).enterPasswordOnPasswordField(password).clickRememberCheckbox();
 		loginpage.clickSignInButton();
 		// add category
 		String categoryName = ExcelUtility.readStringData(1, 0, "Category");
 		String categoryImage = Constants.CATEGORYIMAGE1;
 		CategoryPage categorypage = new CategoryPage(driver);
-		categorypage.clickOnCategoryButton();
-		categorypage.clickOnNewCategoryButton();
-		categorypage.addNewCategoryName(categoryName);
-		categorypage.clickOnDiscount();
-		categorypage.addCategoryImage(categoryImage);
-		categorypage.clickOnSaveCategoryButton();
+		categorypage.clickOnCategoryButton().clickOnNewCategoryButton().addNewCategoryName(categoryName)
+				.clickOnDiscount().addCategoryImage(categoryImage).clickOnSaveCategoryButton();
 		boolean isAddCategoryDisplayed = categorypage.isCategoryTitleDisplayed();
 		Assert.assertTrue(isAddCategoryDisplayed, Messages.HEADINGNOTFOUND);
 
 	}
 
-	@Test(description = "user able to search category", priority = 2)
-	public void userAbleToSearchCategory() throws IOException {
+	@Test(groups = { "category" }, description = "user able to search category", priority = 2)
+	public void searchAndVerifyTheNewlyAddedProductInCategory() throws IOException {
 		String username = ExcelUtility.readStringData(1, 0, "Login");
 		String password = ExcelUtility.readStringData(1, 1, "Login");
 		LoginPage loginpage = new LoginPage(driver);
-		loginpage.enterUsernameOnUsernameField(username);
-		loginpage.enterPasswordOnPasswordField(password);
-		loginpage.clickRememberCheckbox();
+		loginpage.enterUsernameOnUsernameField(username).enterPasswordOnPasswordField(password).clickRememberCheckbox();
 		loginpage.clickSignInButton();
 		// category search
 		String categoryname = ExcelUtility.readStringData(1, 0, "Category");
 		CategoryPage categorypage = new CategoryPage(driver);
-		categorypage.clickOnCategoryButton();
-		categorypage.clickSearch();
-		categorypage.searchCategory(categoryname);
-		categorypage.clickOnSearchButton();
+		categorypage.clickOnCategoryButton().clickSearch().searchCategory(categoryname).clickOnSearchButton();
 		boolean isListCategoryDisplayed = categorypage.isListCategoryTitleDisplayed();
 		Assert.assertTrue(isListCategoryDisplayed, Messages.HEADINGNOTFOUND);
 

@@ -2,10 +2,11 @@ package pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.Select;
+
+import utilities.PageUtility;
+import utilities.WaitUtility;
 
 public class ManageUsersPage {
 	public WebDriver driver;
@@ -42,55 +43,66 @@ public class ManageUsersPage {
 	@FindBy(xpath = "//h1[text()=\"Admin Users\"]")
 	private WebElement adminUserTitle;
 
-	public void clickOnAdminUsersFromNavigation() {
-		adminUsersClick.click();
+	public HomePage clickOnAdminUsersFromNavigation() {
+		WaitUtility.waitUntilElementToBeClickable(driver, adminUsersClick);
+		PageUtility.clickOnElement(adminUsersClick);
+		return new HomePage(driver);
 	}
 
-	public void clickOnManageUsersFromDropdown() {
-		clickOnManageUsers.click();
+	public ManageUsersPage clickOnManageUsersFromDropdown() {
+		PageUtility.clickOnElement(clickOnManageUsers);
+		return this;
 	}
 
-	public void clickOnNewUserButton() {
-		clickOnNewButton.click();
+	public ManageUsersPage clickOnNewUserButton() {
+		PageUtility.clickOnElement(clickOnNewButton);
+		return this;
 	}
 
-	public void addNewUsername(String username) {
+	public ManageUsersPage addNewUsername(String username) {
 		enterUsername.sendKeys(username);
+		return this;
 	}
 
-	public void addNewPassword(String password) {
+	public ManageUsersPage addNewPassword(String password) {
 		enterPassword.sendKeys(password);
+		return this;
 	}
 
-	public void selectUserTypeFromDropdown() {
-		Select select = new Select(selectUserType);
-		select.selectByVisibleText("Admin");
+	public ManageUsersPage selectUserTypeFromDropdown() {
+		PageUtility.selectFromDropdown(selectUserType, "Admin");
+		return this;
 	}
 
-	public void clickOnSaveUserButton() {
-		Actions actions = new Actions(driver);
-		actions.moveToElement(clickSaveUserButton).click().perform();
+	public ManageUsersPage clickOnSaveUserButton() {
+		WaitUtility.waitUntilElementToBeClickable(driver, clickSaveUserButton);
+		PageUtility.windowScrollDown(driver);
+		PageUtility.submitButtonClick(driver, clickSaveUserButton);
+		return this;
 	}
 
 	public boolean isAdminUsersTitleDisplayed() {
 		return titleAdminUsers.isDisplayed();
 	}
 
-	public void clickSearch() {
-		searchButton.click();
+	public ManageUsersPage clickSearch() {
+		PageUtility.clickOnElement(searchButton);
+		return this;
 	}
 
-	public void enterUsernameInSearch(String username) {
+	public ManageUsersPage enterUsernameInSearch(String username) {
 		enterUsernameInSearch.sendKeys(username);
+		return this;
 	}
 
-	public void selectUserTypeFromDropdownInSearch() {
-		Select select = new Select(selectUserTypeInSearch);
-		select.selectByVisibleText("Admin");
+	public ManageUsersPage selectUserTypeFromDropdownInSearch() {
+		PageUtility.selectFromDropdown(selectUserTypeInSearch, "Admin");
+		return this;
 	}
 
-	public void clickOnSearchButton() {
-		clickSearchButton.click();
+	public ManageUsersPage clickOnSearchButton() {
+		PageUtility.clickOnElement(clickSearchButton);
+		return this;
 	}
 
 	public boolean isAdminUserTitleDisplayed() {

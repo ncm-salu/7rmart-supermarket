@@ -5,24 +5,20 @@
 	<listeners>
 		<listener class-name="listeners.ListenerClass"></listener>
 	</listeners>
-	 <test thread-count="5" name="Test">
+	<test thread-count="5" name="Test1">
 		<classes>
 			<class name="testcase.LoginTest">
-				<methods>
-					<include name="userLoginWithValidUsernameandValidPassword"></include>
-				</methods>
 			</class>
-		</classes>
-	</test> 
-	<!--<test thread-count="5" name="Test1">
-		<classes>
+			<class name="testcase.CategoryTest">
+			</class>
 			<class name="testcase.SubCategoryTest">
-				<methods>
-					<include name="addSubCategory"></include>
-				</methods>
+			</class>
+			<class name="testcase.ManageNewsTest">
+			</class>
+			<class name="testcase.ManageUsersTest">
+			</class>
+			<class name="testcase.HomePageTest">
 			</class>
 		</classes>
 	</test>
-	Test -->
-</suite> <!--
-Suite -->
+</suite>

@@ -16,8 +16,9 @@ public class WaitUtility {
 	public static int FLUENTWAITDURATION = 10;
 
 	public void fluentWaitElements(WebDriver driver, WebElement element, String attribute, String attributeValue) {
-		Wait<WebDriver> fluentWait = new FluentWait<WebDriver>(driver).withTimeout(Duration.ofSeconds(FLUENTWAITDURATION))
-				.pollingEvery(Duration.ofSeconds(2)).ignoring(NoSuchElementException.class);
+		Wait<WebDriver> fluentWait = new FluentWait<WebDriver>(driver)
+				.withTimeout(Duration.ofSeconds(FLUENTWAITDURATION)).pollingEvery(Duration.ofSeconds(2))
+				.ignoring(NoSuchElementException.class);
 		fluentWait.until(ExpectedConditions.attributeContains(element, attribute, attributeValue));
 	}
 
@@ -25,9 +26,9 @@ public class WaitUtility {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(IMPLICITWAITDURATION));
 	}
 
-	public void explicitWaitUntilPresenceOfElementLocated(WebDriver driver, By locator) {
+	public static void waitUntilElementToBeClickable(WebDriver driver, WebElement element) {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(EXPLICITWAITDURATION));
-		wait.until(ExpectedConditions.presenceOfElementLocated(locator));
+		wait.until(ExpectedConditions.elementToBeClickable(element));
 	}
 
 	public void waitUntilAlertIsPresent(WebDriver driver, WebElement element) {
@@ -35,17 +36,17 @@ public class WaitUtility {
 		wait.until(ExpectedConditions.alertIsPresent());
 	}
 
+	public void explicitWaitUntilPresenceOfElementLocated(WebDriver driver, By locator) {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(EXPLICITWAITDURATION));
+		wait.until(ExpectedConditions.presenceOfElementLocated(locator));
+	}
+
 	public void waitUntilElementSelectionStateToBePresent(WebDriver driver, WebElement element) {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(EXPLICITWAITDURATION));
 		wait.until(ExpectedConditions.elementSelectionStateToBe(element, false));
 	}
 
-	public static void waitUntilElementToBeClickable(WebDriver driver, WebElement element) {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(EXPLICITWAITDURATION));
-		wait.until(ExpectedConditions.elementToBeClickable(element));
-	}
-
-	public void waitUntilElementToBeSelected(WebDriver driver, WebElement element) {
+	public static void waitUntilElementToBeSelected(WebDriver driver, WebElement element) {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(EXPLICITWAITDURATION));
 		wait.until(ExpectedConditions.elementToBeSelected(element));
 	}
@@ -65,5 +66,4 @@ public class WaitUtility {
 		wait.until(ExpectedConditions.visibilityOf(element));
 	}
 
-	
 }
