@@ -27,7 +27,7 @@ public class ManageUsersTest extends Base {
 		manageuserspage.clickOnManageUsersFromDropdown().clickOnNewUserButton().addNewUsername(newUsername)
 				.addNewPassword(newPassword).selectUserTypeFromDropdown().clickOnSaveUserButton();
 		boolean isAdminUserTitleDisplayed = manageuserspage.isAdminUsersTitleDisplayed();
-		Assert.assertTrue(isAdminUserTitleDisplayed, Messages.HEADINGNOTFOUND);
+		Assert.assertTrue(isAdminUserTitleDisplayed, Messages.ADMINERROR);
 	}
 
 	@Test(groups = { "smoke" }, description = "search a user", priority = 2)
@@ -44,6 +44,6 @@ public class ManageUsersTest extends Base {
 		manageuserspage.clickOnManageUsersFromDropdown().clickSearch().enterUsernameInSearch(searchUsername)
 				.selectUserTypeFromDropdownInSearch().clickOnSearchButton();
 		boolean isAdminUserTitleDisplayed = manageuserspage.isAdminUserTitleDisplayed();
-		Assert.assertTrue(isAdminUserTitleDisplayed, Messages.HEADINGNOTFOUND);
+		Assert.assertTrue(isAdminUserTitleDisplayed, Messages.ADMINSEARCHERROR);
 	}
 }

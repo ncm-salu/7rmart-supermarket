@@ -19,7 +19,7 @@ public class LoginTest extends Base {
 		loginpage.enterUsernameOnUsernameField(username).enterPasswordOnPasswordField(password).clickRememberCheckbox();
 		loginpage.clickSignInButton();
 		boolean isDashboardDisplayed = loginpage.isDashboardDisplayed();
-		Assert.assertTrue(isDashboardDisplayed, Messages.ELEMENTNOTFOUND);
+		Assert.assertTrue(isDashboardDisplayed, Messages.CREDENTIALERROR);
 
 	}
 
@@ -31,7 +31,7 @@ public class LoginTest extends Base {
 		loginpage.enterUsernameOnUsernameField(username).enterPasswordOnPasswordField(password).clickRememberCheckbox();
 		loginpage.clickSignInButton();
 		boolean isErrorMessageDisplayed = loginpage.isAlertboxErrorMessageDisplayed();
-		Assert.assertTrue(isErrorMessageDisplayed, Messages.ALERTMESSAGENOTFOUND);
+		Assert.assertTrue(isErrorMessageDisplayed, Messages.PASSWORDCREDENTIALERROR);
 
 	}
 
@@ -42,7 +42,7 @@ public class LoginTest extends Base {
 		loginpage.enterUsernameOnUsernameField(username).enterPasswordOnPasswordField(password).clickRememberCheckbox();
 		loginpage.clickSignInButton();
 		boolean isErrorMessageDisplayed = loginpage.isAlertboxErrorMessageDisplayed();
-		Assert.assertTrue(isErrorMessageDisplayed, Messages.ALERTMESSAGENOTFOUND);
+		Assert.assertTrue(isErrorMessageDisplayed, Messages.USERNAMECREDENTIALERROR);
 	}
 
 	@Test(groups = { "smoke" }, description = "user login with invalid username and invalid password", priority = 4)
@@ -54,7 +54,7 @@ public class LoginTest extends Base {
 		loginpage.enterUsernameOnUsernameField(username).enterPasswordOnPasswordField(password).clickRememberCheckbox();
 		loginpage.clickSignInButton();
 		boolean isErrorMessageDisplayed = loginpage.isAlertboxErrorMessageDisplayed();
-		Assert.assertTrue(isErrorMessageDisplayed, Messages.ALERTMESSAGENOTFOUND);
+		Assert.assertTrue(isErrorMessageDisplayed, Messages.INVALIDCREDENTIALERROR);
 	}
 
 	// text execution using multiple value

@@ -1,107 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Failed suite [grouping]" guice-stage="DEVELOPMENT">
-  <parameter name="browser" value="chrome"/>
-  <test thread-count="5" name="Test-login(failed)">
-    <groups>
-      <run>
-        <include name="smoke"/>
-      </run>
-    </groups>
+<suite thread-count="3" parallel="methods" name="Failed suite [parallel testing]" guice-stage="DEVELOPMENT">
+  <test thread-count="3" parallel="methods" name="Test1(failed)">
+    <parameter name="browser" value="chrome"/>
     <classes>
       <class name="testcase.LoginTest">
         <methods>
           <include name="initilizeBrowser"/>
-          <include name="userLoginWithValidUsernameandInvalidPassword"/>
-          <include name="userLoginWithInvalidUsernameandInvalidPassword"/>
           <include name="userLoginWithValidUsernameandValidPassword"/>
-          <include name="userLoginWithInvalidUsernameandValidPassword"/>
           <include name="driverQuit"/>
         </methods>
       </class> <!-- testcase.LoginTest -->
     </classes>
-  </test> <!-- Test-login(failed) -->
-  <test thread-count="5" name="Test-category(failed)">
-    <groups>
-      <run>
-        <include name="smoke"/>
-      </run>
-    </groups>
-    <classes>
-      <class name="testcase.CategoryTest">
-        <methods>
-          <include name="initilizeBrowser"/>
-          <include name="addingANewProductToTheCategory"/>
-          <include name="searchAndVerifyTheNewlyAddedProductInCategory"/>
-          <include name="driverQuit"/>
-        </methods>
-      </class> <!-- testcase.CategoryTest -->
-    </classes>
-  </test> <!-- Test-category(failed) -->
-  <test thread-count="5" name="Test-subcategory(failed)">
-    <groups>
-      <run>
-        <include name="smoke"/>
-      </run>
-    </groups>
-    <classes>
-      <class name="testcase.SubCategoryTest">
-        <methods>
-          <include name="initilizeBrowser"/>
-          <include name="addingANewSubCategoryInSubcategoryField"/>
-          <include name="searchNewlyAddedSubCategory"/>
-          <include name="driverQuit"/>
-        </methods>
-      </class> <!-- testcase.SubCategoryTest -->
-    </classes>
-  </test> <!-- Test-subcategory(failed) -->
-  <test thread-count="5" name="Test-user(failed)">
-    <groups>
-      <run>
-        <include name="smoke"/>
-      </run>
-    </groups>
-    <classes>
-      <class name="testcase.ManageUsersTest">
-        <methods>
-          <include name="initilizeBrowser"/>
-          <include name="searchAndVerifyNewlyAddedUser"/>
-          <include name="addingNewUserToTheManageUserSection"/>
-          <include name="driverQuit"/>
-        </methods>
-      </class> <!-- testcase.ManageUsersTest -->
-    </classes>
-  </test> <!-- Test-user(failed) -->
-  <test thread-count="5" name="Test-news(failed)">
-    <groups>
-      <run>
-        <include name="smoke"/>
-      </run>
-    </groups>
-    <classes>
-      <class name="testcase.ManageNewsTest">
-        <methods>
-          <include name="initilizeBrowser"/>
-          <include name="addingNewNewsToManageNewsSection"/>
-          <include name="driverQuit"/>
-        </methods>
-      </class> <!-- testcase.ManageNewsTest -->
-    </classes>
-  </test> <!-- Test-news(failed) -->
-  <test thread-count="5" name="Test-logout(failed)">
-    <groups>
-      <run>
-        <include name="smoke"/>
-      </run>
-    </groups>
-    <classes>
-      <class name="testcase.HomePageTest">
-        <methods>
-          <include name="initilizeBrowser"/>
-          <include name="adminLogoutAfterAdminLoginToHomePage"/>
-          <include name="driverQuit"/>
-        </methods>
-      </class> <!-- testcase.HomePageTest -->
-    </classes>
-  </test> <!-- Test-logout(failed) -->
-</suite> <!-- Failed suite [grouping] -->
+  </test> <!-- Test1(failed) -->
+</suite> <!-- Failed suite [parallel testing] -->

@@ -23,6 +23,6 @@ public class ManageNewsTest extends Base {
 		ManageNewsPage managenewspage = new ManageNewsPage(driver);
 		managenewspage.clickOnManageNewsButton().clickOnNewButton().addNews(addNews).clickOnSaveButton();
 		boolean isnewsDisplayed = managenewspage.isNewsTitleDisplayed();
-		Assert.assertTrue(isnewsDisplayed, Messages.HEADINGNOTFOUND);
+		Assert.assertTrue(isnewsDisplayed, Messages.NEWSERROR);
 	}
 }

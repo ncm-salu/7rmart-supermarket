@@ -26,7 +26,7 @@ public class CategoryTest extends Base {
 		categorypage.clickOnCategoryButton().clickOnNewCategoryButton().addNewCategoryName(categoryName)
 				.clickOnDiscount().addCategoryImage(categoryImage).clickOnSaveCategoryButton();
 		boolean isAddCategoryDisplayed = categorypage.isCategoryTitleDisplayed();
-		Assert.assertTrue(isAddCategoryDisplayed, Messages.HEADINGNOTFOUND);
+		Assert.assertTrue(isAddCategoryDisplayed, Messages.CATEGORYERROR);
 
 	}
 
@@ -42,7 +42,7 @@ public class CategoryTest extends Base {
 		CategoryPage categorypage = new CategoryPage(driver);
 		categorypage.clickOnCategoryButton().clickSearch().searchCategory(categoryname).clickOnSearchButton();
 		boolean isListCategoryDisplayed = categorypage.isListCategoryTitleDisplayed();
-		Assert.assertTrue(isListCategoryDisplayed, Messages.HEADINGNOTFOUND);
+		Assert.assertTrue(isListCategoryDisplayed, Messages.CATEGORYSEARCHERROR);
 
 	}
 }

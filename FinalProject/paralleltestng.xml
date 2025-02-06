@@ -7,9 +7,8 @@
 			<class name="testcase.LoginTest">
 				<methods>
 					<include name="userLoginWithValidUsernameandValidPassword"></include>
+					<include name="userLoginWithInvalidUsernameandValidPassword"></include>
 				</methods>
-			</class>
-			<class name="testcase.HomePageTest">
 			</class>
 		</classes>
 	</test>

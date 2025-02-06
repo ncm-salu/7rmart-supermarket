@@ -26,7 +26,7 @@ public class SubCategoryTest extends Base {
 				.addNewSubCategoryName(subcategoryName).addSubCategoryImage(subcategoryImage);
 		subcategorypage.clickOnSaveSubCategoryButton();
 		boolean isAddSubCategoryDisplayed = subcategorypage.isSubCategoryTitleDisplayed();
-		Assert.assertTrue(isAddSubCategoryDisplayed, Messages.HEADINGNOTFOUND);
+		Assert.assertTrue(isAddSubCategoryDisplayed, Messages.SUBCATEGORYERROR);
 
 	}
 
@@ -43,7 +43,7 @@ public class SubCategoryTest extends Base {
 		subcategorypage.clickOnSubCategoryButton().clickSearch().selectCategoryFromDropdownInSearch()
 				.enterSubCategoryInSearch(categoryname).clickOnSearchButton();
 		boolean isListSubCategoryTitleDisplayed = subcategorypage.isListSubCategoryTitleDisplayed();
-		Assert.assertTrue(isListSubCategoryTitleDisplayed, Messages.HEADINGNOTFOUND);
+		Assert.assertTrue(isListSubCategoryTitleDisplayed, Messages.SUBCATEGORYSEARCHERROR);
 
 	}
 }

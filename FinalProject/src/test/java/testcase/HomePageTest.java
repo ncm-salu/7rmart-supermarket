@@ -10,7 +10,7 @@ import pages.LoginPage;
 import utilities.ExcelUtility;
 
 public class HomePageTest extends Base {
-	@Test(groups = { "smoke" },description = " logout from website", priority = 1)
+	@Test(groups = { "smoke" }, description = " logout from website", priority = 1)
 	public void adminLogoutAfterAdminLoginToHomePage() throws IOException {
 		// login
 		String username = ExcelUtility.readStringData(1, 0, "Login");
@@ -22,7 +22,7 @@ public class HomePageTest extends Base {
 		HomePage homepage = new HomePage(driver);
 		homepage.clickOnAdminButton().clickOnLogoutButton();
 		boolean isSigninButtonDisplayed = homepage.isSigninButtonDisplayed();
-		Assert.assertTrue(isSigninButtonDisplayed, Messages.ELEMENTNOTFOUND);
+		Assert.assertTrue(isSigninButtonDisplayed, Messages.LOGOUTERROR);
 
 	}
 
