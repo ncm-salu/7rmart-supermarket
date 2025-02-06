@@ -5,7 +5,7 @@
 	<test thread-count="5" name="Test-login">
 		<groups>
 			<run>
-				<include name="login"></include>
+				<include name="smoke"></include>
 			</run>
 		</groups>
 		<classes>
@@ -16,7 +16,7 @@
 	<test thread-count="5" name="Test-category">
 		<groups>
 			<run>
-				<include name="category"></include>
+				<include name="smoke"></include>
 			</run>
 		</groups>
 		<classes>
@@ -27,7 +27,7 @@
 	<test thread-count="5" name="Test-subcategory">
 		<groups>
 			<run>
-				<include name="subcategory"></include>
+				<include name="smoke"></include>
 			</run>
 		</groups>
 		<classes>
@@ -38,7 +38,7 @@
 	<test thread-count="5" name="Test-user">
 		<groups>
 			<run>
-				<include name="user"></include>
+				<include name="smoke"></include>
 			</run>
 		</groups>
 		<classes>
@@ -49,11 +49,22 @@
 	<test thread-count="5" name="Test-news">
 		<groups>
 			<run>
-				<include name="news"></include>
+				<include name="smoke"></include>
 			</run>
 		</groups>
 		<classes>
 			<class name="testcase.ManageNewsTest">
+			</class>
+		</classes>
+	</test>
+	<test thread-count="5" name="Test-logout">
+		<groups>
+			<run>
+				<include name="smoke"></include>
+			</run>
+		</groups>
+		<classes>
+			<class name="testcase.HomePageTest">
 			</class>
 		</classes>
 	</test>

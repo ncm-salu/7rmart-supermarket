@@ -11,7 +11,7 @@ import pages.SubCategoryPage;
 import utilities.ExcelUtility;
 
 public class SubCategoryTest extends Base {
-	@Test(groups = { "subcategory" }, description = "add sub category", priority = 1)
+	@Test(groups = { "smoke" }, description = "add sub category", priority = 1)
 	public void addingANewSubCategoryInSubcategoryField() throws IOException {
 		String username = ExcelUtility.readStringData(1, 0, "Login");
 		String password = ExcelUtility.readStringData(1, 1, "Login");
@@ -30,7 +30,7 @@ public class SubCategoryTest extends Base {
 
 	}
 
-	@Test(groups = { "subcategory" }, description = " search sub category", priority = 2)
+	@Test(groups = { "smoke" }, description = " search sub category", priority = 2)
 	public void searchNewlyAddedSubCategory() throws IOException {
 		String username = ExcelUtility.readStringData(1, 0, "Login");
 		String password = ExcelUtility.readStringData(1, 1, "Login");

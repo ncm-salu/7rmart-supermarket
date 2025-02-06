@@ -10,7 +10,7 @@ import pages.LoginPage;
 import utilities.ExcelUtility;
 
 public class HomePageTest extends Base {
-	@Test(description = " logout from website", priority = 1)
+	@Test(groups = { "smoke" },description = " logout from website", priority = 1)
 	public void adminLogoutAfterAdminLoginToHomePage() throws IOException {
 		// login
 		String username = ExcelUtility.readStringData(1, 0, "Login");

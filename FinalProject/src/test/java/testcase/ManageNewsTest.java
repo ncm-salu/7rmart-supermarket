@@ -10,7 +10,7 @@ import pages.ManageNewsPage;
 import utilities.ExcelUtility;
 
 public class ManageNewsTest extends Base {
-	@Test(groups = { "news" }, description = "add news", priority = 1)
+	@Test(groups = { "smoke" }, description = "add news", priority = 1)
 	public void addingNewNewsToManageNewsSection() throws IOException {
 		// login
 		String username = ExcelUtility.readStringData(1, 0, "Login");

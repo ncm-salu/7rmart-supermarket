@@ -11,7 +11,7 @@ import utilities.ExcelUtility;
 import utilities.FakerUtility;
 
 public class ManageUsersTest extends Base {
-	@Test(groups = { "user" }, description = "add new user", priority = 1)
+	@Test(groups = { "smoke" }, description = "add new user", priority = 1)
 	public void addingNewUserToTheManageUserSection() throws IOException {
 		String username = ExcelUtility.readStringData(1, 0, "Login");
 		String password = ExcelUtility.readStringData(1, 1, "Login");
@@ -30,7 +30,7 @@ public class ManageUsersTest extends Base {
 		Assert.assertTrue(isAdminUserTitleDisplayed, Messages.HEADINGNOTFOUND);
 	}
 
-	@Test(groups = { "user" }, description = "search a user", priority = 2)
+	@Test(groups = { "smoke" }, description = "search a user", priority = 2)
 	public void searchAndVerifyNewlyAddedUser() throws IOException {
 		String username = ExcelUtility.readStringData(1, 0, "Login");
 		String password = ExcelUtility.readStringData(1, 1, "Login");

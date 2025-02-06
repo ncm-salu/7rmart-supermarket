@@ -12,7 +12,7 @@ import utilities.ExcelUtility;
 
 public class CategoryTest extends Base {
 
-	@Test(groups = { "category" }, description = " add valid category", priority = 1)
+	@Test(groups = { "smoke" }, description = " add valid category", priority = 1)
 	public void addingANewProductToTheCategory() throws IOException {
 		String username = ExcelUtility.readStringData(1, 0, "Login");
 		String password = ExcelUtility.readStringData(1, 1, "Login");
@@ -30,7 +30,7 @@ public class CategoryTest extends Base {
 
 	}
 
-	@Test(groups = { "category" }, description = "user able to search category", priority = 2)
+	@Test(groups = { "smoke" }, description = "user able to search category", priority = 2)
 	public void searchAndVerifyTheNewlyAddedProductInCategory() throws IOException {
 		String username = ExcelUtility.readStringData(1, 0, "Login");
 		String password = ExcelUtility.readStringData(1, 1, "Login");
